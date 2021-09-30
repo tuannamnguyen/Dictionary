@@ -33,5 +33,48 @@ class Dictionary {
             System.out.println((i + 1) + "  | " + this.wordArray.get(i).getTarget() + "           | " + this.wordArray.get(i).getExplain());
         }
     }
+
+    public void insertFromFile() {
+        try {
+            File x = new File("C:\\Data\\dictionaries.txt");
+            Scanner sc = new Scanner(x);
+            String content = "";
+            while (sc.hasNextLine()) {
+                content += sc.nextLine() + "\r\n";
+            }
+            System.out.println(content);
+            sc.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Error");
+        }
+    }
+
+    public void dictionaryLookup() {
+        try {
+            File x = new File("C:\\Data\\dictionaries.txt");
+            Scanner sc = new Scanner(x);
+            Scanner scanner = new Scanner(System.in);
+            String[] words = new String[100];
+            int i = 0;
+            System.out.print("Nhap tu ban muon tim kiem: ");
+            String s = scanner.next();
+            while (sc.hasNextLine()) {
+                String content = sc.nextLine();
+                words[i] = content;
+                i++;
+            }
+            for(String word : words){
+                if(word == null){
+                    break;
+                }
+                if(word.startsWith(s)){
+                    System.out.println(word);
+                }
+            }
+            sc.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Error");
+        }
+    }
 }
 
