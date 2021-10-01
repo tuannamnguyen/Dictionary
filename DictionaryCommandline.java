@@ -4,9 +4,9 @@ class DictionaryCommandLine {
         dict.showAllWords();
     }
 
-    public static  void dictionaryAdvanced(Dictionary dict) {
+    public static void dictionaryAdvanced(Dictionary dict) {
         dict.insertFromFile();
-        dict.dictionaryLookup();
-        dict.showAllWords();
+        dict.showAllWords(); 
+         dict.dictionaryLookup();
     }
 }
