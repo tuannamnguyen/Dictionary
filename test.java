@@ -3,5 +3,6 @@ public class test {
         Dictionary dict = new Dictionary();
 
         DictionaryCommandLine.dictionaryBasic(dict);
+        DictionaryCommandLine.dictionaryAdvanced(dict);
     }
 }

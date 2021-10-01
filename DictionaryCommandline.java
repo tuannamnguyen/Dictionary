@@ -3,4 +3,10 @@ class DictionaryCommandLine {
         dict.insertFromCommandline();
         dict.showAllWords();
     }
+
+    public static void dictionaryAdvanced(Dictionary dict) {
+        dict.insertFromFile();
+        dict.showAllWords(); 
+         dict.dictionaryLookup();
+    }
 }

@@ -1,4 +1,4 @@
-class Word {
+class Word implements Comparable<Word> {
     private String word_target;
     private String word_explain;
 
@@ -21,5 +21,10 @@ class Word {
 
     public void setExplain(String explain) {
         this.word_explain = explain;
+    }
+
+    @Override
+    public int compareTo(Word other) {
+        return word_target.compareTo(other.word_target);
     }
 }
