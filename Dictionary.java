@@ -42,7 +42,7 @@ class Dictionary {
 
     public void insertFromFile() {
         try {
-            File wordFile = new File("dictionaries.txt");
+            File wordFile = new File("src\\Dictionary\\dictionaries.txt");
             Scanner fileReader = new Scanner(wordFile);
 
             while (fileReader.hasNextLine()) {
