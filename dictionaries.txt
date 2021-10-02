@@ -9,3 +9,4 @@ screen    man hinh
 watch    dong ho
 earth    trai dat
 mouse    con chuot
+pencil    but chi
