@@ -42,7 +42,7 @@ class Dictionary {
 
     public void insertFromFile() {
         try {
-            File wordFile = new File("src\\Dictionary\\dictionaries.txt");
+            File wordFile = new File("dictionaries.txt");
             Scanner fileReader = new Scanner(wordFile);
 
             while (fileReader.hasNextLine()) {
@@ -88,7 +88,6 @@ class Dictionary {
     }
 
     public void dictionaryEdit() {
-        Scanner cin = new Scanner(System.in);
         boolean check = false;
         System.out.println("1. Xoa tu");
         System.out.println("2. Sua tu");
@@ -113,7 +112,7 @@ class Dictionary {
             for (int i = 0; i < this.wordArray.size(); i++) {
                 if (editWord.equals(this.wordArray.get(i).getTarget())) {
                     System.out.print("Sua lai nghia cua tu: ");
-                    String exWord = cin.nextLine();
+                    String exWord = sc.nextLine();
                     this.wordArray.get(i).setExplain(exWord);
                     check = true;
                     break;
@@ -127,11 +126,11 @@ class Dictionary {
 
     }
 
-    public void exportToFile()  {
+    public void exportToFile() {
         try {
             FileWriter myWriter = new FileWriter("dictionaries.txt");
             for (int i = 0; i < this.wordArray.size(); i++) {
-                myWriter.write( this.wordArray.get(i).getTarget()+"    "+this.wordArray.get(i).getExplain());
+                myWriter.write(this.wordArray.get(i).getTarget() + "    " + this.wordArray.get(i).getExplain());
                 myWriter.write("\n");
             }
             myWriter.close();
