@@ -1,15 +1,15 @@
 package Dictionary;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
-import java.io.File;
-import java.io.FileNotFoundException;
 
 class Dictionary {
     ArrayList<Word> wordArray = new ArrayList<>();
 
     Scanner sc = new Scanner(System.in);
-    
+
     public void insertFromCommandline() {
         System.out.println("Nhap vao so luong tu muon nhap: ");
 
@@ -85,5 +85,59 @@ class Dictionary {
 
         System.out.println(this.wordBinarySearch(target));
 
+    }
+
+    public void dictionaryEdit() {
+        Scanner cin = new Scanner(System.in);
+        boolean check = false;
+        System.out.println("1. Xoa tu");
+        System.out.println("2. Sua tu");
+        System.out.println("Chon thao tac ma ban muon sua: ");
+        int key = sc.nextInt();
+        if (key == 1) {
+            System.out.print("Nhap tu muon xoa: ");
+            String delWord = sc.next();
+            for (int i = 0; i < this.wordArray.size(); i++) {
+                if (delWord.equals(this.wordArray.get(i).getTarget())) {
+                    this.wordArray.remove(i);
+                    check = true;
+                    break;
+                }
+            }
+            if (!check) {
+                System.out.println("Khong tim ra tu can xoa!");
+            }
+        } else if (key == 2) {
+            System.out.print("Nhap tu muon sua: ");
+            String editWord = sc.next();
+            for (int i = 0; i < this.wordArray.size(); i++) {
+                if (editWord.equals(this.wordArray.get(i).getTarget())) {
+                    System.out.print("Sua lai nghia cua tu: ");
+                    String exWord = cin.nextLine();
+                    this.wordArray.get(i).setExplain(exWord);
+                    check = true;
+                    break;
+                }
+            }
+
+            if (!check) {
+                System.out.println("Khong tim ra tu can sua!");
+            }
+        }
+
+    }
+
+    public void exportToFile()  {
+        try {
+            FileWriter myWriter = new FileWriter("dictionaries.txt");
+            for (int i = 0; i < this.wordArray.size(); i++) {
+                myWriter.write( this.wordArray.get(i).getTarget()+"    "+this.wordArray.get(i).getExplain());
+                myWriter.write("\n");
+            }
+            myWriter.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
     }
 }

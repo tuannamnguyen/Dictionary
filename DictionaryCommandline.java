@@ -1,4 +1,5 @@
 package Dictionary;
+
 class DictionaryCommandLine {
     public static void dictionaryBasic(Dictionary dict) {
         dict.insertFromCommandline();
@@ -7,7 +8,10 @@ class DictionaryCommandLine {
 
     public static void dictionaryAdvanced(Dictionary dict) {
         dict.insertFromFile();
-        dict.showAllWords(); 
-         dict.dictionaryLookup();
+        dict.showAllWords();
+        dict.dictionaryLookup();
+        dict.dictionaryEdit();
+        dict.exportToFile();
+
     }
 }
