@@ -1,11 +1,15 @@
-car    o to
-music    am nhac
-computer    may tinh
 bottle    chai nuoc
-phone    dien thoai
-wallet    cai vi
 calendar    quyen lich
-screen    man hinh
-watch    dong ho
+car    o to
+cloud    may
+computer    may tinh
 earth    trai dat
 mouse    con chuot
+music    am nhac
+phone    dien thoai
+screen    man hinh
+transform    bien hinh
+translate    dich
+transport    van chuyen
+wallet    cai vi
+watch    dong ho
