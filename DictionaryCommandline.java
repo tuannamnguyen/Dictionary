@@ -3,8 +3,6 @@ package Dictionary;
 import java.util.Scanner;
 
 class DictionaryCommandLine {
-    private static Scanner sc = new Scanner(System.in);
-
     public static void dictionaryBasic(Dictionary dict) {
         dict.insertFromCommandline();
         System.out.println("\n");
@@ -32,6 +30,7 @@ class DictionaryCommandLine {
     }
 
     public static void dictionarySearcher(Dictionary dict) {
+        Scanner sc = new Scanner(System.in);
         System.out.print("Nhap tu ban muon tim: ");
         String search = sc.nextLine();
 
@@ -43,5 +42,7 @@ class DictionaryCommandLine {
                 + dict.wordArray.get(i).getExplain());
             }
         }
+
+        sc.close();
     }
 }

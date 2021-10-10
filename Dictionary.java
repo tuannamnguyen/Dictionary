@@ -54,6 +54,7 @@ class Dictionary {
                 this.wordArray.add(w);
             }
 
+            fileReader.close();
             Collections.sort(this.wordArray);
         } catch (FileNotFoundException e) {
             System.out.println("Error. Khong tim thay file.");
