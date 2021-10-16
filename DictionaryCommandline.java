@@ -26,7 +26,6 @@ class DictionaryCommandLine {
 
         dict.exportToFile();
         System.out.println("\n");
-
     }
 
     public static void dictionarySearcher(Dictionary dict) {

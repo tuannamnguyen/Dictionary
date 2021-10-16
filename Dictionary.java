@@ -48,7 +48,7 @@ class Dictionary {
             while (fileReader.hasNextLine()) {
                 String content = fileReader.nextLine();
                 content.trim();
-                String[] postSplit = content.split("    "); // Lấy từ tiếng Anh và tiếng Việt
+                String[] postSplit = content.split("    ");
 
                 Word w = new Word(postSplit[0], postSplit[1]);
                 this.wordArray.add(w);
@@ -86,6 +86,10 @@ class Dictionary {
 
         System.out.println(this.wordArray.get(wordBinarySearch(target)).getExplain());
 
+    }
+
+    public String dictionaryLookupForGUI(String target) {
+        return this.wordArray.get(wordBinarySearch(target)).getExplain();
     }
 
     public void dictionaryEdit() {
