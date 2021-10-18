@@ -8,6 +8,11 @@ public class Word implements Comparable<Word> {
         word_target = target;
     }
 
+    public Word() {
+        word_explain = "";
+        word_target = "";
+    }
+
     public String getTarget() {
         return this.word_target;
     }

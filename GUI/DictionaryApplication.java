@@ -1,7 +1,6 @@
 package Dictionary.GUI;
 
 import Dictionary.Commandline.*;
-import java.util.List;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -16,6 +15,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.beans.value.ObservableValue;
+import java.util.Collections;
 
 public class DictionaryApplication extends Application{
     public static void main(String[] args) throws Exception {
@@ -27,7 +27,7 @@ public class DictionaryApplication extends Application{
         Dictionary dict = new Dictionary();
         dict.insertFromFile();
 
-        HBox top = topSection();
+        HBox top = topSection(dict);
         ListView<String> left = leftSection(dict);
         VBox center = centerSection(left, dict);
         BorderPane root = new BorderPane();
@@ -43,11 +43,16 @@ public class DictionaryApplication extends Application{
         primaryStage.show();
     }
 
-    public HBox topSection() {
+    public HBox topSection(Dictionary dict) {
         TextField searchBox = new TextField();
         searchBox.setPromptText("Search word");
 
         Button addWord = new Button("Add new word");
+        addWord.setOnAction(e -> {
+            dict.getWordArray().add(addWordWindow.addNewWord());
+            Collections.sort(dict.getWordArray());
+            dict.exportToFile();
+        });
 
         Button deleteWord = new Button("Delete word");
 

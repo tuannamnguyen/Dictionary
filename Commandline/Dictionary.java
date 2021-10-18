@@ -102,6 +102,7 @@ public class Dictionary {
         System.out.println("2. Sua tu");
 
         int key = sc.nextInt();
+        sc.nextLine();
 
         if (key == 1) {
             System.out.print("Nhap tu muon xoa: ");
@@ -114,7 +115,7 @@ public class Dictionary {
             }
         } else if (key == 2) {
             System.out.print("Nhap tu muon sua: ");
-            String editWord = sc.next();
+            String editWord = sc.nextLine();
 
             if (this.wordBinarySearch(editWord) != -1) {
                 System.out.print("Sua lai nghia cua tu: ");
@@ -130,7 +131,7 @@ public class Dictionary {
 
     public void exportToFile() {
         try {
-            FileWriter myWriter = new FileWriter("src\\Dictionary\\dictionaries.txt");
+            FileWriter myWriter = new FileWriter("src\\Dictionary\\resources\\dictionaries.txt");
             for (int i = 0; i < this.wordArray.size(); i++) {
                 myWriter.write(this.wordArray.get(i).getTarget() + "    " + this.wordArray.get(i).getExplain());
                 myWriter.write("\n");
