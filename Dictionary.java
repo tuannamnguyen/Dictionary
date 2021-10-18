@@ -137,4 +137,60 @@ class Dictionary {
             e.printStackTrace();
         }
     }
+    
+    ArrayList<String> List = new ArrayList<>();
+    ArrayList<String> Word = new ArrayList<>();
+    ArrayList<String> TempArr = new ArrayList<>();
+    ArrayList<String> Explain = new ArrayList<>();
+    public void insertFromFileUpdate() {
+        try {
+            File wordFile = new File("src\\Dictionary\\UpdateDictionary.txt");
+            Scanner fileReader = new Scanner(wordFile);
+            String word = "";
+
+            while (fileReader.hasNextLine()) {
+                word += fileReader.nextLine();
+                List.add(word);
+                word = "";
+            }
+
+            for ( int i = 0; i < List.size(); i++) {
+                String tempex = "";
+                String explain = "";
+                String temp = "";
+                if (List.get((i)).startsWith("@")){
+                    int x = List.get(i).indexOf("/");
+                    temp = List.get(i).substring(1,x-1);
+                    Word.add(temp);
+                    tempex = List.get(i).replace(temp,"");
+                    TempArr.add(tempex);
+                }
+                else {
+                    explain += List.get(i);
+                    TempArr.add(explain);
+                }
+            }
+
+            String explain2 = "";
+            for (int i = 0;i < TempArr.size(); i++) {
+                explain2 += TempArr.get(i) + "\n";
+                if(TempArr.get(i).isEmpty()) {
+                    Explain.add(explain2);
+                    explain2 = "";
+                }
+            }
+            fileReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Error. Khong tim thay file.");
+        }
+    }
+    public void dictionaryLookupUpdate() {
+        System.out.println("Nhap tu ma ban muon tra nghia: ");
+        String target = sc.nextLine();
+        for (int i = 0;i < Word.size(); i++){
+            if(target.equals(Word.get(i))){
+                System.out.println(Explain.get(i));
+            }
+        }
+    }
 }
