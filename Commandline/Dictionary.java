@@ -1,12 +1,16 @@
-package Dictionary;
+package Dictionary.Commandline;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-class Dictionary {
+public class Dictionary {
     ArrayList<Word> wordArray = new ArrayList<>();
+
+    public ArrayList<Word> getWordArray() {
+        return this.wordArray;
+    }
 
     private Scanner sc = new Scanner(System.in);
 
@@ -42,7 +46,7 @@ class Dictionary {
 
     public void insertFromFile() {
         try {
-            File wordFile = new File("src\\Dictionary\\dictionaries.txt");
+            File wordFile = new File("src\\Dictionary\\resources\\dictionaries.txt");
             Scanner fileReader = new Scanner(wordFile);
 
             while (fileReader.hasNextLine()) {

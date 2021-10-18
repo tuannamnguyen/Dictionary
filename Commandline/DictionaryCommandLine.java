@@ -1,8 +1,8 @@
-package Dictionary;
+package Dictionary.Commandline;
 
 import java.util.Scanner;
 
-class DictionaryCommandLine {
+public class DictionaryCommandLine {
     public static void dictionaryBasic(Dictionary dict) {
         dict.insertFromCommandline();
         System.out.println("\n");
