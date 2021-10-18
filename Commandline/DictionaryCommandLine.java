@@ -26,7 +26,6 @@ public class DictionaryCommandLine {
 
         dict.exportToFile();
         System.out.println("\n");
-
     }
 
     public static void dictionarySearcher(Dictionary dict) {
@@ -44,13 +43,5 @@ public class DictionaryCommandLine {
         }
 
         sc.close();
-    }
-
-    public static void dictionaryUpdate(Dictionary dict) {
-        dict.insertFromFileUpdate();
-        System.out.println("\n");
-
-        dict.ictionaryLookupUpdate();
-        System.out.println("\n");
     }
 }

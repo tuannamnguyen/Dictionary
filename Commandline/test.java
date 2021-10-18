@@ -6,6 +6,5 @@ public class test {
         DictionaryCommandLine.dictionaryBasic(dict);
         DictionaryCommandLine.dictionaryAdvanced(dict);
         DictionaryCommandLine.dictionarySearcher(dict);
-        DictionaryCommandLine.dictionaryUpdate(dict);
     }
 }
