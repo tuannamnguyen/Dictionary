@@ -1,5 +1,7 @@
 package Dictionary.Commandline;
 
+import Dictionary.Dictionary;
+
 import java.util.Scanner;
 
 public class DictionaryCommandLine {
@@ -49,6 +51,14 @@ public class DictionaryCommandLine {
         System.out.println("\n");
 
         dict.ictionaryLookupUpdate();
+        System.out.println("\n");
+    }
+
+    public static void dictionaryUpdateVer2(Dictionary dict) {
+        dict.insertFromFileUpdateVer2();
+        System.out.println("\n");
+
+        dict.dictionaryLookupUpdateVer2();
         System.out.println("\n");
     }
 }

@@ -1,4 +1,7 @@
 package Dictionary.Commandline;
+
+import Dictionary.DictionaryCommandLine;
+
 public class test {
     public static void main(String[] args) {
         Dictionary dict = new Dictionary();
@@ -7,5 +10,6 @@ public class test {
         DictionaryCommandLine.dictionaryAdvanced(dict);
         DictionaryCommandLine.dictionarySearcher(dict);
         DictionaryCommandLine.dictionaryUpdate(dict);
+        DictionaryCommandLine.dictionaryUpdateVer2(dict);
     }
 }

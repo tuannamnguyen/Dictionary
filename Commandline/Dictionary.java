@@ -1,9 +1,7 @@
 package Dictionary.Commandline;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 public class Dictionary {
     ArrayList<Word> wordArray = new ArrayList<>();
@@ -195,6 +193,48 @@ public class Dictionary {
         for (int i = 0;i < Word.size(); i++){
             if(target.equals(Word.get(i))){
                 System.out.println(Explain.get(i));
+            }
+        }
+    }
+
+    HashMap<String, String> wordMap = new HashMap<>();
+    public  void insertFromFileUpdateVer2() {
+        try {
+            File wordFile = new File("src\\Dictionary\\UpdateDictionary.txt");
+            Scanner fileReader = new Scanner(wordFile);
+            String eng = new String();
+            String vn = new String();
+
+            StringBuilder line = new StringBuilder();
+            String temp = "";
+            while (fileReader.hasNextLine()) {
+                temp = fileReader.nextLine() + "\n";
+                line.append(temp);
+            }
+            String[] eachWord = line.toString().split("@");
+            for (int i = 1; i < eachWord.length; i++) {
+                if (eachWord[i].contains("/")) {
+                    int k = eachWord[i].indexOf("/");
+                    eng = eachWord[i].substring(0, k - 1);
+                    vn = eachWord[i].substring(k, eachWord[i].length() - 1);
+                    wordMap.put(eng, vn);
+                } else {
+                    String[] s = eachWord[i].split("\n", 2);
+                    wordMap.put(s[0], s[1]);
+                }
+            }
+            fileReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Error. Khong tim thay file.");
+        }
+    }
+    public void dictionaryLookupUpdateVer2() {
+        System.out.println("Nhap tu ma ban muon tra nghia: ");
+        String target = sc.nextLine();
+        Set<String> keySet = wordMap.keySet();
+        for (String key : keySet) {
+            if(target.equals(key)) {
+                System.out.println(wordMap.get(key));
             }
         }
     }
