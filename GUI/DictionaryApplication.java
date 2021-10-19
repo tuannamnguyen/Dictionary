@@ -25,7 +25,7 @@ public class DictionaryApplication extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         Dictionary dict = new Dictionary();
-        dict.insertFromFile();
+        dict.insertFromFileUpdated();
 
         HBox top = topSection(dict);
         ListView<String> left = leftSection(dict);

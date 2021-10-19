@@ -44,6 +44,27 @@ public class Dictionary {
 
     public void insertFromFile() {
         try {
+            File wordFile = new File("src\\Dictionary\\resources\\dictionaries.txt");
+            Scanner fileReader = new Scanner(wordFile);
+
+            while (fileReader.hasNextLine()) {
+                String content = fileReader.nextLine();
+                content.trim();
+                String[] postSplit = content.split("    ");
+
+                Word w = new Word(postSplit[0], postSplit[1]);
+                this.wordArray.add(w);
+            }
+
+            fileReader.close();
+            Collections.sort(this.wordArray);
+        } catch (FileNotFoundException e) {
+            System.out.println("Error. Khong tim thay file.");
+        }
+    }
+
+    public void insertFromFileUpdated() {
+        try {
             File wordFile = new File("src\\Dictionary\\resources\\UpdatedDictionary.txt");
             Scanner fileReader = new Scanner(wordFile);
             String eng = new String();

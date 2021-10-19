@@ -1,7 +1,5 @@
 package Dictionary.Commandline;
 
-import Dictionary.DictionaryCommandLine;
-
 public class test {
     public static void main(String[] args) {
         Dictionary dict = new Dictionary();

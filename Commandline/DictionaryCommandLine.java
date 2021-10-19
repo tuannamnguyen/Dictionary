@@ -1,7 +1,5 @@
 package Dictionary.Commandline;
 
-import Dictionary.Dictionary;
-
 import java.util.Scanner;
 
 public class DictionaryCommandLine {
@@ -16,6 +14,9 @@ public class DictionaryCommandLine {
     public static void dictionaryAdvanced(Dictionary dict) {
         dict.insertFromFile();
         System.out.println("\n");
+
+        /*dict.insertFromFileUpdated();
+        System.out.println("\n");*/
 
         dict.showAllWords();
         System.out.println("\n");
