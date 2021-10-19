@@ -46,19 +46,4 @@ public class DictionaryCommandLine {
 
         sc.close();
     }
-    public static void dictionaryUpdate(Dictionary dict) {
-        dict.insertFromFileUpdate();
-        System.out.println("\n");
-
-        dict.ictionaryLookupUpdate();
-        System.out.println("\n");
-    }
-
-    public static void dictionaryUpdateVer2(Dictionary dict) {
-        dict.insertFromFileUpdateVer2();
-        System.out.println("\n");
-
-        dict.dictionaryLookupUpdateVer2();
-        System.out.println("\n");
-    }
 }

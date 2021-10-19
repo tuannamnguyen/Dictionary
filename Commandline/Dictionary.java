@@ -44,20 +44,31 @@ public class Dictionary {
 
     public void insertFromFile() {
         try {
-            File wordFile = new File("src\\Dictionary\\resources\\dictionaries.txt");
+            File wordFile = new File("src\\Dictionary\\resources\\UpdatedDictionary.txt");
             Scanner fileReader = new Scanner(wordFile);
+            String eng = new String();
+            String vn = new String();
 
+            StringBuilder line = new StringBuilder();
+            String temp = "";
             while (fileReader.hasNextLine()) {
-                String content = fileReader.nextLine();
-                content.trim();
-                String[] postSplit = content.split("    ");
-
-                Word w = new Word(postSplit[0], postSplit[1]);
-                this.wordArray.add(w);
+                temp = fileReader.nextLine() + "\n";
+                line.append(temp);
             }
-
+            String[] eachWord = line.toString().split("@");
+            for (int i = 1; i < eachWord.length; i++) {
+                if (eachWord[i].contains("/")) {
+                    int k = eachWord[i].indexOf("/");
+                    eng = eachWord[i].substring(0, k - 1);
+                    vn = eachWord[i].substring(k, eachWord[i].length() - 1);
+                    Word w = new Word(eng, vn);
+                    this.wordArray.add(w);
+                } else {
+                    String[] s = eachWord[i].split("\n", 2);
+                    Word w = new Word(s[0], s[1]);
+                }
+            }
             fileReader.close();
-            Collections.sort(this.wordArray);
         } catch (FileNotFoundException e) {
             System.out.println("Error. Khong tim thay file.");
         }
@@ -141,101 +152,4 @@ public class Dictionary {
         }
     }
     
-    ArrayList<String> List = new ArrayList<>();
-    ArrayList<String> Word = new ArrayList<>();
-    ArrayList<String> TempArr = new ArrayList<>();
-    ArrayList<String> Explain = new ArrayList<>();
-    public void insertFromFileUpdate() {
-        try {
-            File wordFile = new File("src\\Dictionary\\UpdateDictionary.txt");
-            Scanner fileReader = new Scanner(wordFile);
-            String word = "";
-
-            while (fileReader.hasNextLine()) {
-                word += fileReader.nextLine();
-                List.add(word);
-                word = "";
-            }
-
-            for ( int i = 0; i < List.size(); i++) {
-                String tempex = "";
-                String explain = "";
-                String temp = "";
-                if (List.get((i)).startsWith("@")){
-                    int x = List.get(i).indexOf("/");
-                    temp = List.get(i).substring(1,x-1);
-                    Word.add(temp);
-                    tempex = List.get(i).replace(temp,"");
-                    TempArr.add(tempex);
-                }
-                else {
-                    explain += List.get(i);
-                    TempArr.add(explain);
-                }
-            }
-
-            String explain2 = "";
-            for (int i = 0;i < TempArr.size(); i++) {
-                explain2 += TempArr.get(i) + "\n";
-                if(TempArr.get(i).isEmpty()) {
-                    Explain.add(explain2);
-                    explain2 = "";
-                }
-            }
-            fileReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("Error. Khong tim thay file.");
-        }
-    }
-    public void dictionaryLookupUpdate() {
-        System.out.println("Nhap tu ma ban muon tra nghia: ");
-        String target = sc.nextLine();
-        for (int i = 0;i < Word.size(); i++){
-            if(target.equals(Word.get(i))){
-                System.out.println(Explain.get(i));
-            }
-        }
-    }
-
-    HashMap<String, String> wordMap = new HashMap<>();
-    public  void insertFromFileUpdateVer2() {
-        try {
-            File wordFile = new File("src\\Dictionary\\UpdateDictionary.txt");
-            Scanner fileReader = new Scanner(wordFile);
-            String eng = new String();
-            String vn = new String();
-
-            StringBuilder line = new StringBuilder();
-            String temp = "";
-            while (fileReader.hasNextLine()) {
-                temp = fileReader.nextLine() + "\n";
-                line.append(temp);
-            }
-            String[] eachWord = line.toString().split("@");
-            for (int i = 1; i < eachWord.length; i++) {
-                if (eachWord[i].contains("/")) {
-                    int k = eachWord[i].indexOf("/");
-                    eng = eachWord[i].substring(0, k - 1);
-                    vn = eachWord[i].substring(k, eachWord[i].length() - 1);
-                    wordMap.put(eng, vn);
-                } else {
-                    String[] s = eachWord[i].split("\n", 2);
-                    wordMap.put(s[0], s[1]);
-                }
-            }
-            fileReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("Error. Khong tim thay file.");
-        }
-    }
-    public void dictionaryLookupUpdateVer2() {
-        System.out.println("Nhap tu ma ban muon tra nghia: ");
-        String target = sc.nextLine();
-        Set<String> keySet = wordMap.keySet();
-        for (String key : keySet) {
-            if(target.equals(key)) {
-                System.out.println(wordMap.get(key));
-            }
-        }
-    }
 }
