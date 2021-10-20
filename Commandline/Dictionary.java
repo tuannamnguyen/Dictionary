@@ -95,7 +95,7 @@ public class Dictionary {
         }
     }
 
-    private int wordBinarySearch(String target) {
+    public int wordBinarySearch(String target) {
         int left = 0;
         int right = this.wordArray.size() - 1;
 
