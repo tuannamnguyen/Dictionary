@@ -2,8 +2,6 @@ package Dictionary.GUI;
 
 import Dictionary.Commandline.*;
 import javafx.application.Application;
-import javafx.event.ActionEvent;  
-import javafx.event.EventHandler;  
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,7 +16,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.beans.value.ObservableValue;
 
-import java.util.Collections;
 
 public class DictionaryApplication extends Application{
     public static void main(String[] args) throws Exception {
@@ -51,39 +48,10 @@ public class DictionaryApplication extends Application{
         searchBox.setPromptText("Search word");
 
         Button addWord = new Button("Add new word");
-        addWord.setOnAction(e -> {
-            if (dict.wordBinarySearch(addWordWindow.addNewWord().getTarget()) != -1) {
-                Stage AlertBox = new Stage();
-                AlertBox.setTitle("Alert");
-
-                VBox vbox = new VBox();
-                vbox.setSpacing(10);
-                vbox.setAlignment(Pos.CENTER);
-
-                Label alert = new Label();
-                alert.setText("Word already exists!");
-
-                Button close = new Button("OK");
-                close.setOnAction(new EventHandler<ActionEvent>() {  
-              
-                    @Override  
-                    public void handle(ActionEvent arg0) {  
-                        AlertBox.close();
-                    }  
-                });
-
-                vbox.getChildren().addAll(alert, close);
-                Scene scene = new Scene(vbox, 320, 240);
-                AlertBox.setScene(scene);
-                AlertBox.show();
-            } else {
-                dict.getWordArray().add(addWordWindow.addNewWord());
-                Collections.sort(dict.getWordArray());
-                dict.exportToFile();
-            }
-        });
+        addWord.setOnAction(e -> addWordWindow.addNewWord(dict));
 
         Button deleteWord = new Button("Delete word");
+        deleteWord.setOnAction(e -> deleteWordWindow.deleteWord(dict));
 
         Button pronunciation = new Button("Pronunciation");
 

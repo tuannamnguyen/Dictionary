@@ -1,16 +1,20 @@
 package Dictionary.GUI;
 
 import Dictionary.Commandline.*;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import java.util.Collections;
 
 public class addWordWindow {
-    public static Word addNewWord() {
+    public static void addNewWord(Dictionary dict) {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Add word");
@@ -22,23 +26,77 @@ public class addWordWindow {
         explanationField.setPromptText("Enter Vietnamese translation");
 
         Button add = new Button("add");
-        Word addedWord = new Word();
+
         add.setOnAction(e -> {
             String target = targetField.getText();
             String explain = explanationField.getText();
-            addedWord.setTarget(target);
-            addedWord.setExplain(explain);
-            window.close();
+
+            if (dict.wordBinarySearch(target) != -1) {
+                Stage AlertBox = new Stage();
+                AlertBox.initModality(Modality.APPLICATION_MODAL);
+                AlertBox.setTitle("Warning");
+
+                Label alert = new Label();
+                alert.setText("Word already exists!");
+
+                Button close = new Button("OK");
+                close.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent arg0) {
+                        AlertBox.close();
+                    }
+                });
+
+                VBox vboxAdd = new VBox();
+                vboxAdd.getChildren().addAll(alert, close);
+                vboxAdd.setSpacing(10);
+                vboxAdd.setAlignment(Pos.CENTER);
+
+                Scene alertScene = new Scene(vboxAdd, 320, 240);
+
+                AlertBox.setScene(alertScene);
+                AlertBox.showAndWait();
+            } else {
+                dict.getWordArray().add(new Word(target, explain));
+                Collections.sort(dict.getWordArray());                
+                dict.exportToFileUpdated();
+
+                Stage AlertBox = new Stage();
+                AlertBox.initModality(Modality.APPLICATION_MODAL);
+                AlertBox.setTitle("Warning");
+
+                Label alert = new Label();
+                alert.setText("Word added successfully!");
+
+                Button close = new Button("OK");
+                close.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent arg0) {
+                        AlertBox.close();
+                    }
+                });
+
+                VBox vboxAdd = new VBox();
+                vboxAdd.getChildren().addAll(alert, close);
+                vboxAdd.setSpacing(10);
+                vboxAdd.setAlignment(Pos.CENTER);
+
+                Scene alertScene = new Scene(vboxAdd, 320, 240);
+
+                AlertBox.setScene(alertScene);
+                AlertBox.showAndWait();
+
+                window.close();
+            }
         });
 
         VBox vbox = new VBox();
         vbox.getChildren().addAll(targetField, explanationField, add);
         vbox.setSpacing(10);
         vbox.setAlignment(Pos.CENTER);
-
-        Scene scene = new Scene(vbox, 640, 480);    
+        
+        Scene scene = new Scene(vbox, 640, 480);
         window.setScene(scene);
         window.showAndWait();
-        return addedWord;
     }
 }

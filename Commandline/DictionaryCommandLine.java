@@ -15,9 +15,6 @@ public class DictionaryCommandLine {
         dict.insertFromFile();
         System.out.println("\n");
 
-        /*dict.insertFromFileUpdated();
-        System.out.println("\n");*/
-
         dict.showAllWords();
         System.out.println("\n");
 
