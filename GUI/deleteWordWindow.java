@@ -21,9 +21,9 @@ public class deleteWordWindow {
         TextField deleteField = new TextField();
         deleteField.setPromptText("Word to delete");
 
-        String target = deleteField.getText();
         Button delete = new Button("Delete word");
         delete.setOnAction(e -> {
+            String target = deleteField.getText();
             if (dict.wordBinarySearch(target) == -1) {
                 Stage AlertBox = new Stage();
                 AlertBox.initModality(Modality.APPLICATION_MODAL);
@@ -64,7 +64,7 @@ public class deleteWordWindow {
               
                     @Override  
                     public void handle(ActionEvent arg0) {  
-                        dict.exportToFile();
+                        dict.exportToFileUpdated();
                         AlertBox.close();
                     }  
                 });
