@@ -174,7 +174,7 @@ public class Dictionary {
         try {
             FileWriter myWriter = new FileWriter("src\\Dictionary\\resources\\UpdatedDictionary.txt");
             for (int i = 0; i < this.wordArray.size(); i++) {
-                myWriter.write(this.wordArray.get(i).getTarget() + "    " + this.wordArray.get(i).getExplain());
+                myWriter.write("@" + this.wordArray.get(i).getTarget() + " " + this.wordArray.get(i).getExplain() + "\n");
                 myWriter.write("\n");
             }
             myWriter.close();

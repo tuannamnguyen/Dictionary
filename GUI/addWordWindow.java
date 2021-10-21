@@ -22,6 +22,9 @@ public class addWordWindow {
         TextField targetField = new TextField();
         targetField.setPromptText("Enter English word");
 
+        TextField pronunciationField = new TextField();
+        pronunciationField.setPromptText("Enter pronunciation");
+
         TextField explanationField = new TextField();
         explanationField.setPromptText("Enter Vietnamese translation");
 
@@ -29,6 +32,7 @@ public class addWordWindow {
 
         add.setOnAction(e -> {
             String target = targetField.getText();
+            String pronunciation = pronunciationField.getText();
             String explain = explanationField.getText();
 
             if (dict.wordBinarySearch(target) != -1) {
@@ -57,7 +61,7 @@ public class addWordWindow {
                 AlertBox.setScene(alertScene);
                 AlertBox.showAndWait();
             } else {
-                dict.getWordArray().add(new Word(target, explain));
+                dict.getWordArray().add(new Word(target, "/" + pronunciation + "/\n" + explain));
                 Collections.sort(dict.getWordArray());                
                 dict.exportToFileUpdated();
 
@@ -91,7 +95,7 @@ public class addWordWindow {
         });
 
         VBox vbox = new VBox();
-        vbox.getChildren().addAll(targetField, explanationField, add);
+        vbox.getChildren().addAll(targetField, pronunciationField, explanationField, add);
         vbox.setSpacing(10);
         vbox.setAlignment(Pos.CENTER);
         
