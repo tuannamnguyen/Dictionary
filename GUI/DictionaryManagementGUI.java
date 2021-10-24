@@ -36,9 +36,6 @@ public class DictionaryManagementGUI extends Dictionary {
                     vn = eachWord[i].substring(k, eachWord[i].length() - 1);
                     Word w = new Word(eng, vn);
                     this.wordArray.add(w);
-                } else {
-                    String[] s = eachWord[i].split("\n", 2);
-                    Word w = new Word(s[0], s[1]);
                 }
             }
             fileReader.close();
@@ -52,8 +49,7 @@ public class DictionaryManagementGUI extends Dictionary {
         try {
             FileWriter myWriter = new FileWriter("src\\Dictionary\\resources\\UpdatedDictionary.txt");
             for (int i = 0; i < this.wordArray.size(); i++) {
-                myWriter.write("@" + this.wordArray.get(i).getTarget() + " " + this.wordArray.get(i).getExplain());
-                myWriter.write("\n");
+                myWriter.write(String.format("@%s %s\n", this.wordArray.get(i).getTarget(), this.wordArray.get(i).getExplain()));
             }
             myWriter.close();
         } catch (IOException e) {
@@ -62,8 +58,8 @@ public class DictionaryManagementGUI extends Dictionary {
         }
     }
     
-
-    public String dictionaryLookupForGUI(String target) {
+    @Override
+    public String dictionaryLookup(String target) {
         return this.wordArray.get(wordBinarySearch(target)).getExplain();
     }
 }

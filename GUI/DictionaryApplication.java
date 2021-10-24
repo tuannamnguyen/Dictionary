@@ -86,7 +86,7 @@ public class DictionaryApplication extends Application {
 
         targetWords.getSelectionModel().selectedItemProperty()
                 .addListener((ObservableValue<? extends String> ov, String old_val, String new_val) -> {
-                    explain.setText(dict.dictionaryLookupForGUI(new_val));
+                    explain.setText(dict.dictionaryLookup(new_val));
                 });
         VBox explanationView = new VBox();
         explanationView.setAlignment(Pos.CENTER);

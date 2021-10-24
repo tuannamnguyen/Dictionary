@@ -35,5 +35,7 @@ public abstract class Dictionary {
     public abstract void insertFromFile();
 
     public abstract void exportToFile();
+
+    public abstract String dictionaryLookup(String target);
     
 }

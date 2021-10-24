@@ -63,7 +63,7 @@ public class addWordWindow {
                 AlertBox.setScene(alertScene);
                 AlertBox.showAndWait();
             } else {
-                dict.getWordArray().add(new Word(target, "/" + pronunciation + "/\n" + explain + "\n"));
+                dict.getWordArray().add(new Word(target, "/" + pronunciation + "/\n" + explain));
                 Collections.sort(dict.getWordArray());                
                 dict.exportToFile();
                 observableWordList.add(target);

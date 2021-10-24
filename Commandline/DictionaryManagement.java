@@ -81,12 +81,9 @@ public class DictionaryManagement extends Dictionary {
         }
     }
     
-    public void dictionaryLookup() {
-        System.out.println("Nhap tu ma ban muon tra nghia: ");
-        String target = sc.nextLine();
-
-        System.out.println(this.wordArray.get(wordBinarySearch(target)).getExplain());
-
+    @Override
+    public String dictionaryLookup(String target) {
+        return this.wordArray.get(wordBinarySearch(target)).getExplain();
     }
 
     public void dictionaryEdit() {
