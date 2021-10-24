@@ -1,6 +1,7 @@
 package Dictionary.GUI;
 
 import Dictionary.Commandline.*;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Modality;
@@ -11,10 +12,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+
 import java.util.Collections;
 
 public class addWordWindow {
-    public static void addNewWord(Dictionary dict) {
+    public static void addNewWord(Dictionary dict, ObservableList<String> observableWordList) {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Add word");
@@ -64,6 +66,8 @@ public class addWordWindow {
                 dict.getWordArray().add(new Word(target, "/" + pronunciation + "/\n" + explain));
                 Collections.sort(dict.getWordArray());                
                 dict.exportToFileUpdated();
+                observableWordList.add(target);
+                Collections.sort(observableWordList);
 
                 Stage AlertBox = new Stage();
                 AlertBox.initModality(Modality.APPLICATION_MODAL);

@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class Dictionary {
-    ArrayList<Word> wordArray = new ArrayList<>();
+    private ArrayList<Word> wordArray = new ArrayList<>();
 
     public ArrayList<Word> getWordArray() {
         return this.wordArray;
@@ -175,7 +175,6 @@ public class Dictionary {
             FileWriter myWriter = new FileWriter("src\\Dictionary\\resources\\UpdatedDictionary.txt");
             for (int i = 0; i < this.wordArray.size(); i++) {
                 myWriter.write("@" + this.wordArray.get(i).getTarget() + " " + this.wordArray.get(i).getExplain() + "\n");
-                myWriter.write("\n");
             }
             myWriter.close();
         } catch (IOException e) {
