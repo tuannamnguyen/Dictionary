@@ -16,7 +16,7 @@ import javafx.scene.layout.VBox;
 import java.util.Collections;
 
 public class addWordWindow {
-    public static void addNewWord(Dictionary dict, ObservableList<String> observableWordList) {
+    public static void addNewWord(DictionaryManagementGUI dict, ObservableList<String> observableWordList) {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Add word");
@@ -63,9 +63,9 @@ public class addWordWindow {
                 AlertBox.setScene(alertScene);
                 AlertBox.showAndWait();
             } else {
-                dict.getWordArray().add(new Word(target, "/" + pronunciation + "/\n" + explain));
+                dict.getWordArray().add(new Word(target, "/" + pronunciation + "/\n" + explain + "\n"));
                 Collections.sort(dict.getWordArray());                
-                dict.exportToFileUpdated();
+                dict.exportToFile();
                 observableWordList.add(target);
                 Collections.sort(observableWordList);
 

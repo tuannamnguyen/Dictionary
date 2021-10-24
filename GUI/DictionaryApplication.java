@@ -27,8 +27,8 @@ public class DictionaryApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Dictionary dict = new Dictionary();
-        dict.insertFromFileUpdated();
+        DictionaryManagementGUI dict = new DictionaryManagementGUI();
+        dict.insertFromFile();
         
         ArrayList<String> wordList = new ArrayList<>();
         ObservableList<String> observableWordList = FXCollections.observableList(wordList);
@@ -51,7 +51,7 @@ public class DictionaryApplication extends Application {
         primaryStage.show();
     }
 
-    public HBox topSection(Dictionary dict, ObservableList<String> observableWordList) {
+    public HBox topSection(DictionaryManagementGUI dict, ObservableList<String> observableWordList) {
         TextField searchBox = new TextField();
         searchBox.setPromptText("Search word");
 
@@ -81,7 +81,7 @@ public class DictionaryApplication extends Application {
         return targetWords;
     }
 
-    public VBox centerSection(ListView<String> targetWords, Dictionary dict) {
+    public VBox centerSection(ListView<String> targetWords, DictionaryManagementGUI dict) {
         Label explain = new Label();
 
         targetWords.getSelectionModel().selectedItemProperty()

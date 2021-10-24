@@ -1,6 +1,5 @@
 package Dictionary.GUI;
 
-import Dictionary.Commandline.*;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
 public class deleteWordWindow {
-    public static void deleteWord(Dictionary dict, ObservableList<String> observableWordList) {
+    public static void deleteWord(DictionaryManagementGUI dict, ObservableList<String> observableWordList) {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Delete word");
@@ -67,7 +66,7 @@ public class deleteWordWindow {
 
                     @Override
                     public void handle(ActionEvent arg0) {
-                        dict.exportToFileUpdated();
+                        dict.exportToFile();
                         AlertBox.close();
                     }
                 });
