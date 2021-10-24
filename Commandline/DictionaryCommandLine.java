@@ -35,10 +35,10 @@ public class DictionaryCommandLine {
 
         System.out.println("English           | Vietnamese");
 
-        for (int i = 0; i < dict.wordArray.size(); i++) {
-            if (dict.wordArray.get(i).getTarget().contains(search)) {
-                System.out.println(dict.wordArray.get(i).getTarget() + "           | "
-                + dict.wordArray.get(i).getExplain());
+        for (int i = 0; i < dict.getWordArray().size(); i++) {
+            if (dict.getWordArray().get(i).getTarget().contains(search)) {
+                System.out.println(dict.getWordArray().get(i).getTarget() + "           | "
+                + dict.getWordArray().get(i).getExplain());
             }
         }
 

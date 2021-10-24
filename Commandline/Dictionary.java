@@ -1,12 +1,10 @@
 package Dictionary.Commandline;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 public class Dictionary {
-    ArrayList<Word> wordArray = new ArrayList<>();
+    private ArrayList<Word> wordArray = new ArrayList<>();
 
     public ArrayList<Word> getWordArray() {
         return this.wordArray;
@@ -65,7 +63,22 @@ public class Dictionary {
         }
     }
 
-    private int wordBinarySearch(String target) {
+    public void exportToFile() {
+        try {
+            FileWriter myWriter = new FileWriter("src\\Dictionary\\resources\\dictionaries.txt");
+            for (int i = 0; i < this.wordArray.size(); i++) {
+                myWriter.write(this.wordArray.get(i).getTarget() + "    " + this.wordArray.get(i).getExplain());
+                myWriter.write("\n");
+            }
+            myWriter.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+    
+
+    public int wordBinarySearch(String target) {
         int left = 0;
         int right = this.wordArray.size() - 1;
 
@@ -90,10 +103,6 @@ public class Dictionary {
 
         System.out.println(this.wordArray.get(wordBinarySearch(target)).getExplain());
 
-    }
-
-    public String dictionaryLookupForGUI(String target) {
-        return this.wordArray.get(wordBinarySearch(target)).getExplain();
     }
 
     public void dictionaryEdit() {
@@ -129,17 +138,53 @@ public class Dictionary {
 
     }
 
-    public void exportToFile() {
+    public void insertFromFileUpdated() {
         try {
-            FileWriter myWriter = new FileWriter("src\\Dictionary\\resources\\dictionaries.txt");
+            File wordFile = new File("src\\Dictionary\\resources\\UpdatedDictionary.txt");
+            Scanner fileReader = new Scanner(wordFile);
+            String eng = new String();
+            String vn = new String();
+
+            StringBuilder line = new StringBuilder();
+            String temp = "";
+            while (fileReader.hasNextLine()) {
+                temp = fileReader.nextLine() + "\n";
+                line.append(temp);
+            }
+            String[] eachWord = line.toString().split("@");
+            for (int i = 1; i < eachWord.length; i++) {
+                if (eachWord[i].contains("/")) {
+                    int k = eachWord[i].indexOf("/");
+                    eng = eachWord[i].substring(0, k - 1);
+                    vn = eachWord[i].substring(k, eachWord[i].length() - 1);
+                    Word w = new Word(eng, vn);
+                    this.wordArray.add(w);
+                } else {
+                    String[] s = eachWord[i].split("\n", 2);
+                    Word w = new Word(s[0], s[1]);
+                }
+            }
+            fileReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Error. Khong tim thay file.");
+        }
+    }
+
+    public void exportToFileUpdated() {
+        try {
+            FileWriter myWriter = new FileWriter("src\\Dictionary\\resources\\UpdatedDictionary.txt");
             for (int i = 0; i < this.wordArray.size(); i++) {
-                myWriter.write(this.wordArray.get(i).getTarget() + "    " + this.wordArray.get(i).getExplain());
-                myWriter.write("\n");
+                myWriter.write("@" + this.wordArray.get(i).getTarget() + " " + this.wordArray.get(i).getExplain() + "\n");
             }
             myWriter.close();
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+    }
+    
+
+    public String dictionaryLookupForGUI(String target) {
+        return this.wordArray.get(wordBinarySearch(target)).getExplain();
     }
 }
