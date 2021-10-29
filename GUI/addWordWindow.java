@@ -15,7 +15,7 @@ import javafx.scene.layout.VBox;
 
 import java.util.Collections;
 
-public class addWordWindow {
+public class AddWordWindow {
     public static void addNewWord(DictionaryManagementGUI dict, ObservableList<String> observableWordList) {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);

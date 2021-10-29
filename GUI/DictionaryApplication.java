@@ -29,7 +29,7 @@ public class DictionaryApplication extends Application {
     public void start(Stage primaryStage) throws Exception {
         DictionaryManagementGUI dict = new DictionaryManagementGUI();
         dict.insertFromFile();
-        
+
         ArrayList<String> wordList = new ArrayList<>();
         ObservableList<String> observableWordList = FXCollections.observableList(wordList);
         for (Word w : dict.getWordArray()) {
@@ -54,12 +54,15 @@ public class DictionaryApplication extends Application {
     public HBox topSection(DictionaryManagementGUI dict, ObservableList<String> observableWordList) {
         TextField searchBox = new TextField();
         searchBox.setPromptText("Search word");
+        searchBox.textProperty().addListener((ov, oldV, newV) -> {
+            //TODO: Auto complete
+        });
 
         Button addWord = new Button("Add new word");
-        addWord.setOnAction(e -> addWordWindow.addNewWord(dict, observableWordList));
+        addWord.setOnAction(e -> AddWordWindow.addNewWord(dict, observableWordList));
 
         Button deleteWord = new Button("Delete word");
-        deleteWord.setOnAction(e -> deleteWordWindow.deleteWord(dict, observableWordList));
+        deleteWord.setOnAction(e -> DeleteWordWindow.deleteWord(dict, observableWordList));
 
         Button pronunciation = new Button("Pronunciation");
 
@@ -84,8 +87,7 @@ public class DictionaryApplication extends Application {
     public VBox centerSection(ListView<String> targetWords, DictionaryManagementGUI dict) {
         Label explain = new Label();
 
-        targetWords.getSelectionModel().selectedItemProperty()
-                .addListener((ObservableValue<? extends String> ov, String old_val, String new_val) -> {
+        targetWords.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends String> ov, String old_val, String new_val) -> {
                     explain.setText(dict.dictionaryLookup(new_val));
                 });
         VBox explanationView = new VBox();
