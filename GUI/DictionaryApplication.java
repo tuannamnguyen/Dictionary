@@ -1,6 +1,8 @@
 package Dictionary.GUI;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import Dictionary.Commandline.*;
 import javafx.application.Application;
@@ -54,8 +56,19 @@ public class DictionaryApplication extends Application {
     public HBox topSection(DictionaryManagementGUI dict, ObservableList<String> observableWordList) {
         TextField searchBox = new TextField();
         searchBox.setPromptText("Search word");
+        
+        final List<String> copy = Collections.unmodifiableList(observableWordList);
+        Trie trie = new Trie(copy);
         searchBox.textProperty().addListener((ov, oldV, newV) -> {
-            //TODO: Auto complete
+            System.out.println(newV.trim().isBlank());
+            
+            if (newV.trim().isBlank()) {
+                observableWordList.clear();
+                observableWordList.addAll(copy);
+            } else {
+                observableWordList.clear();
+                observableWordList.addAll(trie.suggest(newV));
+            }
         });
 
         Button addWord = new Button("Add new word");
