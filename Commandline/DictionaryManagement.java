@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.Scanner;
 
+import Dictionary.Dictionary;
+
 public class DictionaryManagement extends Dictionary {
     public DictionaryManagement() {
         super();
@@ -80,10 +82,14 @@ public class DictionaryManagement extends Dictionary {
             e.printStackTrace();
         }
     }
-    
+
     @Override
     public String dictionaryLookup(String target) {
-        return this.wordArray.get(wordBinarySearch(target)).getExplain();
+        if (target != null) {
+            return this.wordArray.get(wordBinarySearch(target)).getExplain();
+        } else {
+            return "";
+        }
     }
 
     public void dictionaryEdit() {

@@ -1,6 +1,8 @@
-package Dictionary.Commandline;
+package Dictionary;
 
 import java.util.*;
+
+import Dictionary.Commandline.Word;
 
 public abstract class Dictionary {
     protected ArrayList<Word> wordArray;

@@ -4,10 +4,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Scanner;
 
+import Dictionary.Dictionary;
 import Dictionary.Commandline.Word;
-import Dictionary.Commandline.Dictionary;
 
 public class DictionaryManagementGUI extends Dictionary {
     public DictionaryManagementGUI() {
@@ -49,7 +50,8 @@ public class DictionaryManagementGUI extends Dictionary {
         try {
             FileWriter myWriter = new FileWriter("src\\Dictionary\\resources\\UpdatedDictionary.txt");
             for (int i = 0; i < this.wordArray.size(); i++) {
-                myWriter.write(String.format("@%s %s\n", this.wordArray.get(i).getTarget(), this.wordArray.get(i).getExplain()));
+                myWriter.write(String.format("@%s %s\n", this.wordArray.get(i).getTarget(),
+                        this.wordArray.get(i).getExplain()));
             }
             myWriter.close();
         } catch (IOException e) {
@@ -57,9 +59,21 @@ public class DictionaryManagementGUI extends Dictionary {
             e.printStackTrace();
         }
     }
-    
+
     @Override
     public String dictionaryLookup(String target) {
-        return this.wordArray.get(wordBinarySearch(target)).getExplain();
+        if (target != null) {
+            return this.wordArray.get(wordBinarySearch(target)).getExplain();
+        } else {
+            return "";
+        }
+
+    }
+
+    public static void main(String[] args) {
+        DictionaryManagementGUI d = new DictionaryManagementGUI();
+        d.insertFromFile();
+        Collections.sort(d.getWordArray());
+        d.exportToFile();
     }
 }

@@ -31,6 +31,7 @@ public class DictionaryApplication extends Application {
     public void start(Stage primaryStage) throws Exception {
         DictionaryManagementGUI dict = new DictionaryManagementGUI();
         dict.insertFromFile();
+        
 
         ArrayList<String> wordList = new ArrayList<>();
         ObservableList<String> observableWordList = FXCollections.observableList(wordList);
