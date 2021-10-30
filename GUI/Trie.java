@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 public class Trie {
 
@@ -90,20 +89,4 @@ public class Trie {
 		suggestHelper(lastNode, list, curr);
 		return list;
 	}
-
-
-	public static void main(String[] args) {
-		List<String> words = List.of("hello", "dog", "hell", "cat", "a", "hel","help","helps","helping");
-		Trie trie = new Trie(words);
-	
-		Scanner sc = new Scanner(System.in);
-		String sugg = sc.nextLine();
-		if (sugg.trim().isEmpty()) {
-			System.out.println(words);
-		} else {
-			System.out.println(trie.suggest(sugg));
-		}
-		
-	}
-
 }
