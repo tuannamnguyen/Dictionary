@@ -38,9 +38,9 @@ public class DictionaryApplication extends Application {
         for (Word w : dict.getWordArray()) {
             wordList.add(w.getTarget());
         }
-
-        HBox top = topSection(dict, observableWordList);
+        
         ListView<String> left = leftSection(observableWordList);
+        HBox top = topSection(dict, observableWordList, left);
         ScrollPane center = centerSection(left, dict);
         BorderPane root = new BorderPane();
         root.setTop(top);
@@ -54,7 +54,7 @@ public class DictionaryApplication extends Application {
         primaryStage.show();
     }
 
-    public HBox topSection(DictionaryManagementGUI dict, ObservableList<String> observableWordList) {
+    public HBox topSection(DictionaryManagementGUI dict, ObservableList<String> observableWordList, ListView<String> lView) {
         TextField searchBox = new TextField();
         searchBox.setPromptText("Search word");
 
@@ -79,6 +79,11 @@ public class DictionaryApplication extends Application {
         deleteWord.setOnAction(e -> DeleteWordWindow.deleteWord(dict, observableWordList));
 
         Button pronunciation = new Button("Pronunciation");
+        pronunciation.setOnAction(e -> {
+            String current = lView.getSelectionModel().getSelectedItem();
+            TextToSpeech tts = new TextToSpeech(current);
+            tts.SpeakText(current);
+        });
 
         HBox topBar = new HBox();
         topBar.setPadding(new Insets(15, 12, 15, 12));
