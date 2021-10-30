@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.Scanner;
 
 import Dictionary.Dictionary;
-import Dictionary.Commandline.Word;
+import Dictionary.Word;
 
 public class DictionaryManagementGUI extends Dictionary {
     public DictionaryManagementGUI() {

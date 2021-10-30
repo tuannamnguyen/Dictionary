@@ -1,5 +1,6 @@
 package Dictionary.GUI;
 
+import Dictionary.Word;
 import Dictionary.Commandline.*;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
