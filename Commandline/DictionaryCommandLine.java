@@ -3,7 +3,8 @@ package Dictionary.Commandline;
 import java.util.Scanner;
 
 public class DictionaryCommandLine {
-    public static void dictionaryBasic(Dictionary dict) {
+    private static Scanner sc = new Scanner(System.in);
+    public static void dictionaryBasic(DictionaryManagement dict) {
         dict.insertFromCommandline();
         System.out.println("\n");
 
@@ -11,14 +12,16 @@ public class DictionaryCommandLine {
         System.out.println("\n");
     }
 
-    public static void dictionaryAdvanced(Dictionary dict) {
+    public static void dictionaryAdvanced(DictionaryManagement dict) {
         dict.insertFromFile();
         System.out.println("\n");
 
         dict.showAllWords();
         System.out.println("\n");
 
-        dict.dictionaryLookup();
+        System.out.println("Nhap tu ma ban muon tra nghia: ");
+        String target = sc.nextLine();
+        System.out.println(dict.dictionaryLookup(target));
         System.out.println("\n");
 
         dict.dictionaryEdit();
@@ -28,8 +31,8 @@ public class DictionaryCommandLine {
         System.out.println("\n");
     }
 
-    public static void dictionarySearcher(Dictionary dict) {
-        Scanner sc = new Scanner(System.in);
+    public static void dictionarySearcher(DictionaryManagement dict) {
+        
         System.out.print("Nhap tu ban muon tim: ");
         String search = sc.nextLine();
 
