@@ -39,5 +39,6 @@ public class TextToSpeech {
         String words = sc.nextLine();
         TextToSpeech tts = new TextToSpeech(words);
         tts.SpeakText(words);
+        sc.close();
     }
 }

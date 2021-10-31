@@ -36,6 +36,12 @@ public abstract class Dictionary {
 
     public abstract void exportToFile();
 
-    public abstract String dictionaryLookup(String target);
-    
+    public String dictionaryLookup(String target) {
+        if (target != null) {
+            return this.wordArray.get(wordBinarySearch(target)).getExplain();
+        } else {
+            return "";
+        }
+    }
+
 }

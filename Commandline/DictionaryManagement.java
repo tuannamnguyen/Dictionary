@@ -84,15 +84,6 @@ public class DictionaryManagement extends Dictionary {
         }
     }
 
-    @Override
-    public String dictionaryLookup(String target) {
-        if (target != null) {
-            return this.wordArray.get(wordBinarySearch(target)).getExplain();
-        } else {
-            return "";
-        }
-    }
-
     public void dictionaryEdit() {
         System.out.println("Chon thao tac ma ban muon sua: ");
         System.out.println("1. Xoa tu");
