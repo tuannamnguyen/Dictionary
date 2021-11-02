@@ -6,7 +6,6 @@ import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 
 public class TextToSpeech {
-    // String voiceName = "kevin16";
     VoiceManager freeVM;
     Voice voice;
 
@@ -19,7 +18,6 @@ public class TextToSpeech {
                 voice.setRate(190);// Setting the rate of the voice
                 voice.setPitch(150);// Setting the Pitch of the voice
                 voice.setVolume(3);// Setting the volume of the voice
-                SpeakText(words);// Calling speak() method
 
             } catch (Exception e1) {
                 e1.printStackTrace();

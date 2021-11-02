@@ -1,7 +1,6 @@
 package Dictionary.GUI;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import Dictionary.Word;
@@ -42,6 +41,7 @@ public class DictionaryApplication extends Application {
         ListView<String> left = leftSection(observableWordList);
         HBox top = topSection(dict, observableWordList, left);
         ScrollPane center = centerSection(left, dict);
+        
         BorderPane root = new BorderPane();
         root.setTop(top);
         root.setLeft(left);
@@ -58,7 +58,12 @@ public class DictionaryApplication extends Application {
         TextField searchBox = new TextField();
         searchBox.setPromptText("Search word");
 
-        final List<String> copy = Collections.unmodifiableList(observableWordList);
+        List<String> copy = new ArrayList<>();
+
+        for (Word w : dict.getWordArray()) {
+            copy.add(w.getTarget());
+        }
+
         Trie trie = new Trie(copy);
         searchBox.textProperty().addListener((ov, oldV, newV) -> {
             System.out.println(newV.trim().isBlank());
