@@ -9,6 +9,10 @@ public class TextToSpeech {
     VoiceManager freeVM;
     Voice voice;
 
+    /**
+     * constructor.
+     * @param words word to pronounce.
+     */
     public TextToSpeech(String words) {
         System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
         voice = VoiceManager.getInstance().getVoice("kevin16");
@@ -28,6 +32,10 @@ public class TextToSpeech {
         }
     }
 
+    /**
+     * pronounce selected word.
+     * @param words selected word.
+     */
     public void SpeakText(String words) {
         voice.speak(words);
     }
