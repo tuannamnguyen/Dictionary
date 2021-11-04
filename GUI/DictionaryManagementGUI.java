@@ -60,16 +60,6 @@ public class DictionaryManagementGUI extends Dictionary {
         }
     }
 
-    @Override
-    public String dictionaryLookup(String target) {
-        if (target != null) {
-            return this.wordArray.get(wordBinarySearch(target)).getExplain();
-        } else {
-            return "";
-        }
-
-    }
-
     public static void main(String[] args) {
         DictionaryManagementGUI d = new DictionaryManagementGUI();
         d.insertFromFile();

@@ -1,7 +1,6 @@
 package Dictionary.GUI;
 
 import Dictionary.Word;
-import Dictionary.Commandline.*;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,6 +16,12 @@ import javafx.scene.layout.VBox;
 import java.util.Collections;
 
 public class AddWordWindow {
+
+    /**
+     * add word to application.
+     * @param dict dictionary.
+     * @param observableWordList data of listview.
+     */
     public static void addNewWord(DictionaryManagementGUI dict, ObservableList<String> observableWordList) {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
