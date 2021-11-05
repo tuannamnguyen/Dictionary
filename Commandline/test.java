@@ -1,12 +1,6 @@
 package Dictionary.Commandline;
 
 public class test {
-
-    /**
-     * test runner.
-     * 
-     * @param args commandline args.
-     */
     public static void main(String[] args) {
         DictionaryManagement dict = new DictionaryManagement();
 

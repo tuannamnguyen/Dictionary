@@ -13,11 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
 public class DeleteWordWindow {
-    /**
-     * delete word from application.
-     * @param dict dictionary.
-     * @param observableWordList data of listview.
-     */
     public static void deleteWord(DictionaryManagementGUI dict, ObservableList<String> observableWordList) {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);

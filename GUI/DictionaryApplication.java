@@ -1,6 +1,7 @@
 package Dictionary.GUI;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import Dictionary.Word;
@@ -41,7 +42,6 @@ public class DictionaryApplication extends Application {
         ListView<String> left = leftSection(observableWordList);
         HBox top = topSection(dict, observableWordList, left);
         ScrollPane center = centerSection(left, dict);
-        
         BorderPane root = new BorderPane();
         root.setTop(top);
         root.setLeft(left);
@@ -54,23 +54,11 @@ public class DictionaryApplication extends Application {
         primaryStage.show();
     }
 
-    /**
-     * top section that contains functional buttons.
-     * @param dict dictionary.
-     * @param observableWordList data of listview.
-     * @param lView listview.
-     * @return top bar of dictionary app.
-     */
     public HBox topSection(DictionaryManagementGUI dict, ObservableList<String> observableWordList, ListView<String> lView) {
         TextField searchBox = new TextField();
         searchBox.setPromptText("Search word");
 
-        List<String> copy = new ArrayList<>();
-
-        for (Word w : dict.getWordArray()) {
-            copy.add(w.getTarget());
-        }
-
+        final List<String> copy = Collections.unmodifiableList(observableWordList);
         Trie trie = new Trie(copy);
         searchBox.textProperty().addListener((ov, oldV, newV) -> {
             System.out.println(newV.trim().isBlank());
@@ -106,11 +94,6 @@ public class DictionaryApplication extends Application {
         return topBar;
     }
 
-    /**
-     * left section: listview that shows all words in dictionary.
-     * @param observableWordList data for listview.
-     * @return listview.
-     */
     public ListView<String> leftSection(ObservableList<String> observableWordList) {
         ListView<String> targetWords = new ListView<>();
         targetWords.setItems(observableWordList);
@@ -120,12 +103,6 @@ public class DictionaryApplication extends Application {
         return targetWords;
     }
 
-    /**
-     * center section: shows translation.
-     * @param targetWords listview of application (list of english words).
-     * @param dict 
-     * @return center section of application.
-     */
     public ScrollPane centerSection(ListView<String> targetWords, DictionaryManagementGUI dict) {
         Label explain = new Label();
 

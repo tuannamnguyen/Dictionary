@@ -17,9 +17,6 @@ public class DictionaryManagement extends Dictionary {
 
     private Scanner sc = new Scanner(System.in);
 
-    /**
-     * read word from commandline.
-     */
     public void insertFromCommandline() {
         System.out.println("Nhap vao so luong tu muon nhap: ");
 
@@ -40,9 +37,6 @@ public class DictionaryManagement extends Dictionary {
         Collections.sort(this.wordArray);
     }
 
-    /**
-     * display all words on commandline.
-     */
     public void showAllWords() {
         System.out.println("Danh sach tat ca cac tu dang co trong tu dien: ");
         System.out.println("No  | English           | Vietnamese");
@@ -90,9 +84,15 @@ public class DictionaryManagement extends Dictionary {
         }
     }
 
-    /**
-     * edit word on commandline.
-     */
+    @Override
+    public String dictionaryLookup(String target) {
+        if (target != null) {
+            return this.wordArray.get(wordBinarySearch(target)).getExplain();
+        } else {
+            return "";
+        }
+    }
+
     public void dictionaryEdit() {
         System.out.println("Chon thao tac ma ban muon sua: ");
         System.out.println("1. Xoa tu");
@@ -125,4 +125,5 @@ public class DictionaryManagement extends Dictionary {
         }
 
     }
+
 }

@@ -3,9 +3,6 @@ package Dictionary;
 import java.util.*;
 
 public abstract class Dictionary {
-    /**
-     * word array to store data.
-     */
     protected ArrayList<Word> wordArray;
 
     public Dictionary() {
@@ -16,12 +13,6 @@ public abstract class Dictionary {
         return this.wordArray;
     }
 
-    /**
-     * custom binary search that returns position in word array.
-     * 
-     * @param target word to search for.
-     * @return position of word.
-     */
     public int wordBinarySearch(String target) {
         int left = 0;
         int right = this.wordArray.size() - 1;
@@ -41,28 +32,10 @@ public abstract class Dictionary {
         return -1;
     }
 
-    /**
-     * import data from file into word array.
-     */
     public abstract void insertFromFile();
 
-    /**
-     * export all words to file.
-     */
     public abstract void exportToFile();
 
-    /**
-     * look for translation of a word.
-     * 
-     * @param target english.
-     * @return vietnamese.
-     */
-    public String dictionaryLookup(String target) {
-        if (target != null) {
-            return this.wordArray.get(wordBinarySearch(target)).getExplain();
-        } else {
-            return "";
-        }
-    }
-
+    public abstract String dictionaryLookup(String target);
+    
 }

@@ -4,11 +4,6 @@ import java.util.Scanner;
 
 public class DictionaryCommandLine {
     private static Scanner sc = new Scanner(System.in);
-
-    /**
-     * basic funtions test.
-     * @param dict dictionary.
-     */
     public static void dictionaryBasic(DictionaryManagement dict) {
         dict.insertFromCommandline();
         System.out.println("\n");
@@ -17,10 +12,6 @@ public class DictionaryCommandLine {
         System.out.println("\n");
     }
 
-    /**
-     * advanced functions test.
-     * @param dict dictionary.
-     */
     public static void dictionaryAdvanced(DictionaryManagement dict) {
         dict.insertFromFile();
         System.out.println("\n");
@@ -40,10 +31,6 @@ public class DictionaryCommandLine {
         System.out.println("\n");
     }
 
-    /**
-     * look for words in dictionary.
-     * @param dict dictionary.
-     */
     public static void dictionarySearcher(DictionaryManagement dict) {
         
         System.out.print("Nhap tu ban muon tim: ");
