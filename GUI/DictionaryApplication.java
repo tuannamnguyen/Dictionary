@@ -68,7 +68,7 @@ public class DictionaryApplication extends Application {
                 observableWordList.addAll(copy);
             } else {
                 observableWordList.clear();
-                observableWordList.addAll(trie.suggest(newV));
+                observableWordList.addAll(trie.suggest(newV.trim()));
             }
         });
 
