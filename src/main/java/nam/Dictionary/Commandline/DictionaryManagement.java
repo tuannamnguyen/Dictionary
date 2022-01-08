@@ -56,7 +56,7 @@ public class DictionaryManagement extends Dictionary {
     @Override
     public void insertFromFile() {
         try {
-            File wordFile = new File("src\\Dictionary\\resources\\dictionaries.txt");
+            File wordFile = new File("src/main/java/nam/Dictionary/resources/dictionaries.txt");
             Scanner fileReader = new Scanner(wordFile);
 
             while (fileReader.hasNextLine()) {
@@ -78,7 +78,7 @@ public class DictionaryManagement extends Dictionary {
     @Override
     public void exportToFile() {
         try {
-            FileWriter myWriter = new FileWriter("src\\Dictionary\\resources\\dictionaries.txt");
+            FileWriter myWriter = new FileWriter("src/main/java/nam/Dictionary/resources/dictionaries.txt");
             for (int i = 0; i < this.wordArray.size(); i++) {
                 myWriter.write(this.wordArray.get(i).getTarget() + "    " + this.wordArray.get(i).getExplain());
                 myWriter.write("\n");

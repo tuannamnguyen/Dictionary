@@ -18,7 +18,7 @@ public class DictionaryManagementGUI extends Dictionary {
     @Override
     public void insertFromFile() {
         try {
-            File wordFile = new File("src\\Dictionary\\resources\\UpdatedDictionary.txt");
+            File wordFile = new File("src/main/java/nam/Dictionary/resources/UpdatedDictionary.txt");
             Scanner fileReader = new Scanner(wordFile);
             String eng = new String();
             String vn = new String();
@@ -41,21 +41,21 @@ public class DictionaryManagementGUI extends Dictionary {
             }
             fileReader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Error. Khong tim thay file.");
+            e.printStackTrace();
+
         }
     }
 
     @Override
     public void exportToFile() {
         try {
-            FileWriter myWriter = new FileWriter("src\\Dictionary\\resources\\UpdatedDictionary.txt");
+            FileWriter myWriter = new FileWriter("src/main/java/nam/Dictionary/resources/UpdatedDictionary.txt");
             for (int i = 0; i < this.wordArray.size(); i++) {
                 myWriter.write(String.format("@%s %s\n", this.wordArray.get(i).getTarget(),
                         this.wordArray.get(i).getExplain()));
             }
             myWriter.close();
         } catch (IOException e) {
-            System.out.println("An error occurred.");
             e.printStackTrace();
         }
     }
