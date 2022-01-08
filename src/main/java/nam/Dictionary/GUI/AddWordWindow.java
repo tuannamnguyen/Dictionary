@@ -1,19 +1,19 @@
-package Dictionary.GUI;
+package nam.Dictionary.GUI;
 
-import Dictionary.Word;
+import java.util.Collections;
+
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-
-import java.util.Collections;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import nam.Dictionary.Word;
 
 public class AddWordWindow {
 

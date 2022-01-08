@@ -1,9 +1,8 @@
-package Dictionary.GUI;
+package nam.Dictionary.GUI;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Dictionary.Word;
 import javafx.application.Application;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -20,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import nam.Dictionary.Word;
 
 public class DictionaryApplication extends Application {
     public static void main(String[] args) throws Exception {

@@ -1,4 +1,4 @@
-package Dictionary.Commandline;
+package nam.Dictionary.Commandline;
 
 import java.util.Scanner;
 

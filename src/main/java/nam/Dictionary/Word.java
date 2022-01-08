@@ -1,4 +1,4 @@
-package Dictionary;
+package nam.Dictionary;
 
 public class Word implements Comparable<Word> {
     private String word_target;

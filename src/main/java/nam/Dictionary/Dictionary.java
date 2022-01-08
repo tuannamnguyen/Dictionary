@@ -1,4 +1,4 @@
-package Dictionary;
+package nam.Dictionary;
 
 import java.util.*;
 

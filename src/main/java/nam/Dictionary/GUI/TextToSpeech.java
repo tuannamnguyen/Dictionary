@@ -1,4 +1,4 @@
-package Dictionary.GUI;
+package nam.Dictionary.GUI;
 
 import java.util.Scanner;
 

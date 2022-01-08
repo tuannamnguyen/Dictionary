@@ -1,4 +1,4 @@
-package Dictionary.GUI;
+package nam.Dictionary.GUI;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.Scanner;
 
-import Dictionary.Dictionary;
-import Dictionary.Word;
+import nam.Dictionary.Dictionary;
+import nam.Dictionary.Word;
 
 public class DictionaryManagementGUI extends Dictionary {
     public DictionaryManagementGUI() {
