@@ -22,12 +22,12 @@ import javafx.stage.Stage;
 import nam.Dictionary.Word;
 
 public class DictionaryApplication extends Application {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         DictionaryManagementGUI dict = new DictionaryManagementGUI();
         dict.insertFromFile();
         
