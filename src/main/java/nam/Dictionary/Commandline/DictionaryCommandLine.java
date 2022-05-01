@@ -7,6 +7,7 @@ public class DictionaryCommandLine {
 
     /**
      * basic funtions test.
+     * 
      * @param dict dictionary.
      */
     public static void dictionaryBasic(DictionaryManagement dict) {
@@ -19,6 +20,7 @@ public class DictionaryCommandLine {
 
     /**
      * advanced functions test.
+     * 
      * @param dict dictionary.
      */
     public static void dictionaryAdvanced(DictionaryManagement dict) {
@@ -42,10 +44,11 @@ public class DictionaryCommandLine {
 
     /**
      * look for words in dictionary.
+     * 
      * @param dict dictionary.
      */
     public static void dictionarySearcher(DictionaryManagement dict) {
-        
+
         System.out.print("Nhap tu ban muon tim: ");
         String search = sc.nextLine();
 
@@ -54,7 +57,7 @@ public class DictionaryCommandLine {
         for (int i = 0; i < dict.getWordArray().size(); i++) {
             if (dict.getWordArray().get(i).getTarget().contains(search)) {
                 System.out.println(dict.getWordArray().get(i).getTarget() + "           | "
-                + dict.getWordArray().get(i).getExplain());
+                        + dict.getWordArray().get(i).getExplain());
             }
         }
 

@@ -11,6 +11,7 @@ public class TextToSpeech {
 
     /**
      * constructor.
+     * 
      * @param words word to pronounce.
      */
     public TextToSpeech(String words) {
@@ -34,6 +35,7 @@ public class TextToSpeech {
 
     /**
      * pronounce selected word.
+     * 
      * @param words selected word.
      */
     public void SpeakText(String words) {

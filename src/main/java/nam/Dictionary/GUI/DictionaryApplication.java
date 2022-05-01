@@ -30,18 +30,17 @@ public class DictionaryApplication extends Application {
     public void start(Stage primaryStage) {
         DictionaryManagementGUI dict = new DictionaryManagementGUI();
         dict.insertFromFile();
-        
 
         ArrayList<String> wordList = new ArrayList<>();
         ObservableList<String> observableWordList = FXCollections.observableList(wordList);
         for (Word w : dict.getWordArray()) {
             wordList.add(w.getTarget());
         }
-        
+
         ListView<String> left = leftSection(observableWordList);
         HBox top = topSection(dict, observableWordList, left);
         ScrollPane center = centerSection(left, dict);
-        
+
         BorderPane root = new BorderPane();
         root.setTop(top);
         root.setLeft(left);
@@ -56,12 +55,14 @@ public class DictionaryApplication extends Application {
 
     /**
      * top section that contains functional buttons.
-     * @param dict dictionary.
+     * 
+     * @param dict               dictionary.
      * @param observableWordList data of listview.
-     * @param lView listview.
+     * @param lView              listview.
      * @return top bar of dictionary app.
      */
-    public HBox topSection(DictionaryManagementGUI dict, ObservableList<String> observableWordList, ListView<String> lView) {
+    public HBox topSection(DictionaryManagementGUI dict, ObservableList<String> observableWordList,
+            ListView<String> lView) {
         TextField searchBox = new TextField();
         searchBox.setPromptText("Search word");
 
@@ -108,6 +109,7 @@ public class DictionaryApplication extends Application {
 
     /**
      * left section: listview that shows all words in dictionary.
+     * 
      * @param observableWordList data for listview.
      * @return listview.
      */
@@ -122,8 +124,9 @@ public class DictionaryApplication extends Application {
 
     /**
      * center section: shows translation.
+     * 
      * @param targetWords listview of application (list of english words).
-     * @param dict 
+     * @param dict
      * @return center section of application.
      */
     public ScrollPane centerSection(ListView<String> targetWords, DictionaryManagementGUI dict) {

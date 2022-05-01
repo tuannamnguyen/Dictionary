@@ -19,7 +19,8 @@ public class AddWordWindow {
 
     /**
      * add word to application.
-     * @param dict dictionary.
+     * 
+     * @param dict               dictionary.
      * @param observableWordList data of listview.
      */
     public static void addNewWord(DictionaryManagementGUI dict, ObservableList<String> observableWordList) {
@@ -70,7 +71,7 @@ public class AddWordWindow {
                 AlertBox.showAndWait();
             } else {
                 dict.getWordArray().add(new Word(target, "/" + pronunciation + "/\n" + explain));
-                Collections.sort(dict.getWordArray());                
+                Collections.sort(dict.getWordArray());
                 dict.exportToFile();
                 observableWordList.add(target);
                 Collections.sort(observableWordList);
@@ -108,7 +109,7 @@ public class AddWordWindow {
         vbox.getChildren().addAll(targetField, pronunciationField, explanationField, add);
         vbox.setSpacing(10);
         vbox.setAlignment(Pos.CENTER);
-        
+
         Scene scene = new Scene(vbox, 640, 480);
         window.setScene(scene);
         window.showAndWait();
